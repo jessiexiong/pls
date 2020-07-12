@@ -5,7 +5,7 @@ import { Button, View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainTabScreen from './screens/MainTabScreen';
-
+import SupportScreen from './screens/SupportScreen'
 import {DrawerContent} from './screens/DrawerContent';
 
 const Drawer = createDrawerNavigator();
@@ -25,8 +25,9 @@ function App() {
   return (
     <NavigationContainer>
         <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
-        <Drawer.Screen name="Home" component={MainTabScreen} /> 
-        {/*<Drawer.Screen name="Details" component={DetailsStackScreen} /> */}
+        <Drawer.Screen name="HomeDrawer" component={MainTabScreen} /> 
+        <Drawer.Screen name="Support" component={SupportScreen} /> 
+
       </Drawer.Navigator>
 
     </NavigationContainer>

@@ -25,7 +25,7 @@ const MainTabScreen = () => (
     style={{ backgroundColor: 'tomato' }}
   >
     <Tab.Screen
-      name="Home"
+      name='Home'
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Home',
@@ -34,9 +34,6 @@ const MainTabScreen = () => (
         ),
       }}
     />
-
-
-
     <Tab.Screen
       name="Notifications"
       component={DetailsStackScreen}
@@ -49,7 +46,7 @@ const MainTabScreen = () => (
       }}
     />
     <Tab.Screen
-      name="Profile"
+      name="Profile" //this name is what you use to help navigate
       component={ProfileStackScreen}
       options={{
         tabBarLabel: 'Profile',
@@ -78,9 +75,9 @@ export default MainTabScreen;
 const HomeStackScreen = ({navigation}) => (
     <HomeStack.Navigator  screenOptions={{
         headerStyle: {
-          backgroundColor: '#006400',
+          backgroundColor: '#fff',
         },
-        headerTintColor: '#fff',
+        headerTintColor: '#006400',
         headerTitleStyle: {
           fontWeight: 'bold',
         },
@@ -93,7 +90,8 @@ const HomeStackScreen = ({navigation}) => (
       title: 'Envirobuddy', 
       headerLeft: () => (
         <Icon.Button name='ios-menu' size={30}
-        backgroundColor='#006400' onPress={() => navigation.openDrawer
+        color='#006400'
+        backgroundColor='#fff' onPress={() => navigation.openDrawer
         ()}>
 
         </Icon.Button>
@@ -156,6 +154,7 @@ const ProfileStackScreen = ({navigation}) => (
       options={{
         headerLeft: () => (
           <Icon.Button name='ios-menu' size={30}
+          color='#000'
             backgroundColor='#555' onPress={() => navigation.openDrawer
             ()}>
     

@@ -19,6 +19,7 @@ import{
     Switch
 } from 'react-native-paper';
 
+import HomeScreen from './HomeScreen'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -34,7 +35,10 @@ export function DrawerContent(props){
                                 uri: 'https://images.unsplash.com/photo-1568967729548-e3dbad3d37e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
                             }}
                             />
-                            <View>
+                            <View style= {{
+                                marginLeft: 15,
+                                flexDirection: 'column'
+                                }}>
                                 <Title style={styles.title}>
                                     Jessie
                                 </Title>
@@ -44,7 +48,57 @@ export function DrawerContent(props){
 
                             </View>
                         </View>
+                        <View style={styles.row}>
+                            <View style={styles.section}>
+                                <Paragraph style={[styles.paragraph, styles.caption]}>80</Paragraph>
+                                <Caption style = {styles.caption}>Following</Caption>
+                            </View>
+                        </View> 
                     </View>
+                    <Drawer.Section style={styles.drawerSection}>
+                        <DrawerItem
+                        icon = {({color, size})=> (
+                            <Icon
+                                name='ios-home'                            
+                                color={color}
+                                size={size}
+                            />
+                        )}
+                        label='Home'
+                        onPress={() =>{props.navigation.navigate('Home')}}
+                        />
+                        <DrawerItem
+                            icon = {({color, size})=> (
+                                <Icon
+                                    name='logo-apple'                            
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label='Profile'
+                            onPress={() =>{props.navigation.navigate('Profile')}}
+                        />
+                        <DrawerItem
+                            icon = {({color, size})=> (
+                                <Icon
+                                    name='ios-log-out'                            
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label='Home'
+                            onPress={() =>{props.navigation.navigate('Support')}}
+                        />
+                        
+                    </Drawer.Section>
+
+                    <Drawer.Section style={styles.drawerSection}>
+                        <DrawerItem
+
+                        label='Preferences'
+                        onPress={() =>{}}
+                    />
+                    </Drawer.Section>
                 </View>
             </DrawerContentScrollView>
             <Drawer.Section style={styles.bottomDrawerSection}>
@@ -96,7 +150,7 @@ const styles = StyleSheet.create({
       marginRight: 3,
     },
     drawerSection: {
-      marginTop: 15,
+      marginTop: 5,
     },
     bottomDrawerSection: {
         marginBottom: 15,
