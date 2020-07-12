@@ -19,7 +19,7 @@ const Tab = createMaterialBottomTabNavigator();
 const MainTabScreen = () => (
     <Tab.Navigator
     initialRouteName="Feed"
-    activeColor="#e91e63"
+    activeColor="#fff"
     style={{ backgroundColor: 'tomato' }}
   >
     <Tab.Screen
@@ -27,6 +27,7 @@ const MainTabScreen = () => (
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Home',
+        tabBarColor: '#006400',
         tabBarIcon: ({ color }) => (
           <Icon name="ios-home" color={color} size={26} />
         ),
@@ -37,6 +38,8 @@ const MainTabScreen = () => (
       component={DetailsStackScreen}
       options={{
         tabBarLabel: 'Updates',
+        tabBarColor: '#333',
+
         tabBarIcon: ({ color }) => (
           <Icon name="ios-notifications" color={color} size={26} />
         ),
@@ -47,6 +50,8 @@ const MainTabScreen = () => (
       component={ProfileScreen}
       options={{
         tabBarLabel: 'Profile',
+        tabBarColor: '#555',
+
         tabBarIcon: ({ color }) => (
           <Icon name="ios-person" color={color} size={26} />
         ),
@@ -57,6 +62,8 @@ const MainTabScreen = () => (
       component={ExploreScreen}
       options={{
         tabBarLabel: 'Profile',
+        tabBarColor: '#222',
+
         tabBarIcon: ({ color }) => (
           <Icon name="ios-albums" color={color} size={26} />
         ),
@@ -102,7 +109,7 @@ const DetailsStackScreen = ({navigation}) => (
 <DetailsStack.Navigator
           screenOptions={{
     headerStyle: {
-      backgroundColor: '#006400',
+      backgroundColor: '#333',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -117,7 +124,7 @@ const DetailsStackScreen = ({navigation}) => (
   options={{
     headerLeft: () => (
       <Icon.Button name='ios-menu' size={30}
-        backgroundColor='#006400' onPress={() => navigation.openDrawer
+        backgroundColor='#333' onPress={() => navigation.openDrawer
         ()}>
 
         </Icon.Button>
