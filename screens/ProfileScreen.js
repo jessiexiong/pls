@@ -3,8 +3,12 @@ import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 
 function ProfileScreen({navigation}) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
+    <View style={{ 
+      flex: 1, 
+      alignItems: 'center', 
+      justifyContent: 'center' 
+      }}>
+      <Text>Profile Screen</Text>
       <Button title="Go back" onPress={() => navigation.goBack()} />
 
     </View>
