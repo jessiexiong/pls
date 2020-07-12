@@ -3,10 +3,10 @@
 import * as React from 'react';
 import { Button, View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import MainTabScreen from './screens/MainTabScreen';
 
+import {DrawerContent} from './screens/DrawerContent';
 
 const Drawer = createDrawerNavigator();
 
@@ -24,7 +24,7 @@ function LogoTitle() {
 function App() {
   return (
     <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
         <Drawer.Screen name="Home" component={MainTabScreen} /> 
         {/*<Drawer.Screen name="Details" component={DetailsStackScreen} /> */}
       </Drawer.Navigator>

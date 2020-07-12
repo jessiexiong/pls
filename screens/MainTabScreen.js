@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
 import HomeScreen from './HomeScreen';
@@ -16,13 +16,12 @@ const DetailsStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const ExploreStack = createStackNavigator();
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 
 const MainTabScreen = () => (
     <Tab.Navigator
     initialRouteName="Feed"
-    activeColor="#fff"
     style={{ backgroundColor: 'tomato' }}
   >
     <Tab.Screen
@@ -30,18 +29,19 @@ const MainTabScreen = () => (
       component={HomeStackScreen}
       options={{
         tabBarLabel: 'Home',
-        tabBarColor: '#006400',
         tabBarIcon: ({ color }) => (
           <Icon name="ios-home" color={color} size={26} />
         ),
       }}
     />
+
+
+
     <Tab.Screen
       name="Notifications"
       component={DetailsStackScreen}
       options={{
         tabBarLabel: 'Updates',
-        tabBarColor: '#333',
 
         tabBarIcon: ({ color }) => (
           <Icon name="ios-notifications" color={color} size={26} />
@@ -53,7 +53,6 @@ const MainTabScreen = () => (
       component={ProfileStackScreen}
       options={{
         tabBarLabel: 'Profile',
-        tabBarColor: '#555',
 
         tabBarIcon: ({ color }) => (
           <Icon name="ios-person" color={color} size={26} />
@@ -65,7 +64,6 @@ const MainTabScreen = () => (
       component={ExploreStackScreen}
       options={{
         tabBarLabel: 'Explore',
-        tabBarColor: '#222',
 
         tabBarIcon: ({ color }) => (
           <Icon name="ios-albums" color={color} size={26} />
