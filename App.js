@@ -4,32 +4,79 @@ import * as React from 'react';
 import { Button, View, Text, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-function HomeScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button 
-      title = 'Details'
-      onPress = {() =>navigation.navigate('Details')}
+import HomeScreen from './screens/HomeScreen';
+import DetailsScreen from './screens/DetailsScreen';
+
+
+
+const HomeStack = createStackNavigator();
+const DetailsStack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const HomeStackScreen = ({navigation}) => (
+      <HomeStack.Navigator  screenOptions={{
+          headerStyle: {
+            backgroundColor: '#006400',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+        >
+        <HomeStack.Screen 
+        name="Home" 
+        component={HomeScreen} 
+        options={{ 
+        title: 'Envirobuddy', 
+        headerLeft: () => (
+          <Icon.Button name='ios-menu' size={30}
+          backgroundColor='#006400' onPress={() => navigation.openDrawer
+          ()}>
+
+          </Icon.Button>
+        )
+        //headerTitle: props => <LogoTitle {...props} />
+      }}
+        />
+
+      </HomeStack.Navigator>
+
+);
+
+const DetailsStackScreen = ({navigation}) => (
+  <DetailsStack.Navigator
+            screenOptions={{
+      headerStyle: {
+        backgroundColor: '#006400',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}
+    >
+
+    <DetailsStack.Screen 
+    name="Details" 
+    component={DetailsScreen} 
+    options={{
+      headerLeft: () => (
+        <Icon.Button name='ios-menu' size={30}
+          backgroundColor='#006400' onPress={() => navigation.openDrawer
+          ()}>
+
+          </Icon.Button>
+      )
+    }}
       />
-    </View>
-  );
-}
 
-function DetailsScreen({navigation}) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+  </DetailsStack.Navigator>
 
-    </View>
-  );
-}
-
-
-
-const Stack = createStackNavigator();
+);
 
 function LogoTitle() {
   return (
@@ -43,30 +90,11 @@ function LogoTitle() {
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          title: 'My home',
-          headerStyle: {
-            backgroundColor: '#006400',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}
-        >
-        {/*this is the top of the page*/}
-        <Stack.Screen 
-        name="Home" 
-        component={HomeScreen} 
-        options={{ 
-        title: 'Envirobuddy', 
-        //headerTitle: props => <LogoTitle {...props} />
-      }}
-        />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeStackScreen} />
+        <Drawer.Screen name="Details" component={DetailsStackScreen} />
+      </Drawer.Navigator>
 
-      </Stack.Navigator>
     </NavigationContainer>
   );
 }
